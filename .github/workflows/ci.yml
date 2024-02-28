@@ -21,4 +21,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: touch .env.backend
       - run: docker compose config
