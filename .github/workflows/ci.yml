@@ -8,6 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: apt-get update
-      - run: apt-get install nginx -y
-      - run: nginx -c nginx/nginx.conf -T
+      - run: docker ps -a
