@@ -2,8 +2,6 @@ name: CI
 
 on:
   pull_request:
-    paths:
-      - nginx/nginx.conf
 
 jobs:
   validate_nginx:
