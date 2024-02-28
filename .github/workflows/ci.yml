@@ -22,4 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: touch .env.backend
-      - run: docker compose config
+      - run: envsubst docker-compose.yml > docker-compose.ci.yml
+      - run: docker compose -f docker-compose.ci.yml config
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
