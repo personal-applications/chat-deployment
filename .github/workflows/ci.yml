@@ -14,4 +14,7 @@ jobs:
     container: nginx:1.25.4
     steps:
       - uses: actions/checkout@v4
-      - run: nginx -c ${{ github.workspace }}/nginx/nginx.conf -t
+      - run: |
+          ls -a
+          cd ${{ github.workspace }} && ls -a
+          nginx -c ${{ github.workspace }}/nginx/nginx.conf -t
