@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   backend:
-    image: adamward459/chat-api:latest
+    image: $DOCKER_USERNAME/chat-api:latest
     env_file:
       - ./.env.backend
       - ./.env.test
@@ -14,7 +14,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - 8080:80
+      - 80:80
     command: [nginx-debug, '-g', 'daemon off;']
 
 volumes:
