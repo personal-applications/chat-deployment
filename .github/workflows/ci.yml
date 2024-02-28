@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - nginx/nginx.conf
+
+jobs:
+  validate_nginx:
+    runs-on: ubuntu-latest
+    container: nginx:1.25.4
+    steps:
+      - uses: actions/checkout@v4
+      - run: cat ./nginx/nginx.conf | nginx -t
