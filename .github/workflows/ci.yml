@@ -13,4 +13,4 @@ jobs:
           - 4000:80
     steps:
       - uses: actions/checkout@v4
-      - run: docker run --rm -it -v ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro nginx:1.25.4 nginx -t
+      - run: docker run --rm -i -v ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro nginx:1.25.4 nginx -t
