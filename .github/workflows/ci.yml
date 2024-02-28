@@ -15,6 +15,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          ls -a
           cat ./nginx/nginx.conf
-          nginx -c ${{ github.workspace }}/nginx/nginx.conf -t
+          nginx -c ./nginx/nginx.conf -t
