@@ -14,4 +14,5 @@ jobs:
     container: nginx:1.25.4
     steps:
       - uses: actions/checkout@v4
-      - run: ls -a
+      - run: pwd
+      - run: nginx -c nginx/nginx.conf -t
