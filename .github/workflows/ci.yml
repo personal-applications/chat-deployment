@@ -6,11 +6,6 @@ on:
 jobs:
   validate_nginx:
     runs-on: ubuntu-latest
-    services:
-      backend:
-        image: nginx:1.25.4
-        ports:
-          - 4000:80
     container: nginx:1.25.4
     steps:
       - uses: actions/checkout@v4
