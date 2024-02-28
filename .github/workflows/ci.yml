@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  validate_nginx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: apt-get update
+      - run: apt-get install nginx -y
+      - run: nginx -c nginx/nginx.conf -T
