@@ -16,3 +16,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: cp ./nginx/nginx.conf /etc/nginx/nginx.conf
       - run: nginx -t
+
+  validate_docker_compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config
