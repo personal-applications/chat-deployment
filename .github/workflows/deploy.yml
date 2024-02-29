@@ -5,14 +5,7 @@ on:
     branches:
       - main
 
-  workflow_call:
-    secrets:
-      VM_HOST:
-        required: true
-      VM_USERNAME:
-        required: true
-      VM_PRIVATE_KEY:
-        required: true
+  workflow_dispatch:
 
 jobs:
   deploy:
