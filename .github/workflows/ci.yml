@@ -3,6 +3,10 @@ name: CI
 on:
   pull_request:
 
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   validate_nginx:
     runs-on: ubuntu-latest
@@ -24,5 +28,5 @@ jobs:
       - run: touch .env.backend
       - run: envsubst < docker-compose.yml > docker-compose.ci.yml
       - run: docker compose -f docker-compose.ci.yml config
-    env:
-      DOCKERHUB_USERNAME: DOCKERHUB_USERNAME
+        env:
+          DOCKERHUB_USERNAME: DOCKERHUB_USERNAME
