@@ -4,16 +4,15 @@ on:
   push:
     branches:
       - main
-  pull_request:
 
-  # workflow_call:
-  #   secrets:
-  #     VM_HOST:
-  #       required: true
-  #     VM_USERNAME:
-  #       required: true
-  #     VM_PRIVATE_KEY:
-  #       required: true
+  workflow_call:
+    secrets:
+      VM_HOST:
+        required: true
+      VM_USERNAME:
+        required: true
+      VM_PRIVATE_KEY:
+        required: true
 
 jobs:
   deploy:
