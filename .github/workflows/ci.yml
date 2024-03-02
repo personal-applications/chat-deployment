@@ -32,5 +32,5 @@ jobs:
           DOCKERHUB_USERNAME: DOCKERHUB_USERNAME
 
   trigger_create_deployment:
-    uses: ./github/workflows/create-deployment.yml@main
+    uses: ./.github/workflows/create-deployment.yml@main
     secrets: inherit
