@@ -30,7 +30,3 @@ jobs:
       - run: docker compose -f docker-compose.ci.yml config
         env:
           DOCKERHUB_USERNAME: DOCKERHUB_USERNAME
-
-  trigger_create_deployment:
-    uses: ./github/workflows/create-deployment.yml@d10cad59435cf7928d1b379958f212ecbc78df48
-    secrets: inherit
