@@ -13,9 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: envsubst < docker-compose.yml > deployment.yml
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       - run: |
           echo DATABASE_URL=$DATABASE_URL >> .env.backend
           echo JWT_SECRET=$JWT_SECRET  >> .env.backend
@@ -29,7 +26,7 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_PRIVATE_KEY }}
-          source: deployment.yml,.env.backend,.env.test,nginx
+          source: docker-compose.yml,.env.backend,.env.test,nginx
           target: /${{ secrets.VM_USERNAME }}
           timeout: 120s
       - uses: appleboy/ssh-action@v1.0.3
@@ -37,4 +34,4 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_PRIVATE_KEY }}
-          script: docker compose -f deployment.yml up -d
+          script: docker compose up -d
