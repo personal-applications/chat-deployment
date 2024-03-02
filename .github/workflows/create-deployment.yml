@@ -17,6 +17,5 @@ jobs:
               event_type: 'deploy',
             });
             console.log(result)
-            console.log(`Target Job URL: ${process.env.GITHUB_SERVER_URL}/${{ github.repository_owner }}/chat-deployment/actions/runs/${result.data.id}`);
 
           github-token: ${{ secrets.DISPATCH_PAT }}
