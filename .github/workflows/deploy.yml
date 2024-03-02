@@ -12,7 +12,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_PRIVATE_KEY }}
+          script: |
+            rm-rf ${{ github.event.repository.name }}
+            git clone --depth 1 https://github.com/${{ github.repository }}.git
       - run: |
           echo DATABASE_URL=$DATABASE_URL >> .env.backend
           echo JWT_SECRET=$JWT_SECRET  >> .env.backend
@@ -26,12 +33,14 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_PRIVATE_KEY }}
-          source: docker-compose.yml,.env.backend,.env.test,nginx
-          target: /${{ secrets.VM_USERNAME }}
+          source: .env.backend
+          target: /${{ secrets.VM_USERNAME }}/${{ github.event.repository.name }}
           timeout: 120s
       - uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_PRIVATE_KEY }}
-          script: docker compose up -d --force-recreate
+          script: |
+            cd ${{ github.event.repository.name }}
+            docker compose up -d --force-recreate
