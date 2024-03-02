@@ -6,7 +6,6 @@ on:
 
 jobs:
   create-deployment:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
@@ -17,6 +16,6 @@ jobs:
               repo: 'chat-deployment',
               event_type: 'deploy',
             });
-            console.log(`Target Job URL: ${process.env.GITHUB_SERVER_URL}/${{ github.repository_owner }}/chat-deployment/actions/runs/${result.data.id}`);
+            console.log(result)
 
           github-token: ${{ secrets.DISPATCH_PAT }}
