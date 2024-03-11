@@ -4,8 +4,8 @@ services:
   backend:
     image: adamward459/chat-api:latest
     env_file:
-      - ./.env.backend
       - ./.env.test
+      - ./.env.backend
     volumes:
       - prisma:/app/prisma
 
