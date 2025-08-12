@@ -17,14 +17,14 @@ jobs:
           - 4000:80
     container: nginx:1.25.4
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: cp ./nginx/nginx.conf /etc/nginx/nginx.conf
       - run: nginx -t
 
   validate_docker_compose:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: touch .env.backend
       - run: envsubst < docker-compose.yml > docker-compose.ci.yml
       - run: docker compose -f docker-compose.ci.yml config
