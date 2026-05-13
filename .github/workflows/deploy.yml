@@ -28,7 +28,7 @@ jobs:
           echo BACKEND_DOMAIN=$BACKEND_DOMAIN  >> .env.backend
           echo JWT_SECRET_FORGOT_PASSWORD=$JWT_SECRET_FORGOT_PASSWORD  >> .env.backend
           echo JWT_EXPIRATION_TIME_FORGOT_PASSWORD=$JWT_EXPIRATION_TIME_FORGOT_PASSWORD  >> .env.backend
-      - uses: appleboy/scp-action@v0.1.7
+      - uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
