@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     services:
       backend:
-        image: nginx:1.25.4
+        image: nginx:1.31.5
         ports:
           - 4000:80
-    container: nginx:1.25.4
+    container: nginx:1.31.5
     steps:
       - uses: actions/checkout@v4
       - run: cp ./nginx/nginx.conf /etc/nginx/nginx.conf
